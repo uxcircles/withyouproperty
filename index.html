@@ -181,23 +181,26 @@ section{position:relative}
 .card{position:relative;border-radius:var(--radius);overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;transition:transform .4s}
 .card:hover{transform:translateY(-6px)}
 .card.big{grid-row:span 2}
-.card .pc{font-family:var(--display);font-weight:300;font-size:clamp(64px,8vw,120px);line-height:.9;opacity:.92;letter-spacing:-.02em}
-.card.big .pc{font-size:clamp(90px,11vw,170px)}
+.card .pc{display:block;font-family:var(--display);font-weight:300;font-size:clamp(40px,4.4vw,62px);line-height:1;margin-bottom:6px;opacity:.95;letter-spacing:-.02em}
+.card.big .pc{font-size:clamp(60px,7vw,100px)}
 .card h3{font-size:22px;margin-bottom:4px}
 .card p{font-size:14px;opacity:.82;line-height:1.5}
 .card .top{display:flex;justify-content:space-between;align-items:start}
 .card .pill{font-size:12px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px)}
 .card .arrow{width:44px;height:44px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;transition:transform .3s}
 .card:hover .arrow{transform:rotate(-45deg)}
-.card .house{position:absolute;right:-20px;bottom:-10px;width:62%;opacity:.13;pointer-events:none}
-.c1{background:linear-gradient(150deg,#B5532C,#7E3417)}
-.c2{background:linear-gradient(150deg,#2F4A3C,#1B2C23)}
-.c3{background:linear-gradient(150deg,#C99A52,#8C6326)}
-.c4{background:linear-gradient(150deg,#3A3531,#1D1A17)}
-.c5{background:var(--paper);color:var(--ink);border:1px dashed var(--brick)}
-.c5 .pill{background:var(--sand)}
-.c5 .arrow{background:var(--brick);color:#fff}
-.sold{position:absolute;right:24px;top:70px;transform:rotate(-12deg);border:2px solid var(--gold);color:var(--gold);padding:4px 14px;border-radius:8px;font-weight:700;letter-spacing:.2em;font-size:14px}
+.card .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph{transform:scale(1.06)}
+.card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(29,26,23,.35) 0%,rgba(29,26,23,.05) 35%,rgba(29,26,23,.15) 55%,var(--tint) 100%)}
+.card>:not(.ph):not(.sold){position:relative;z-index:2}
+.card .sold{z-index:2}
+.card .pc{text-shadow:0 4px 30px rgba(0,0,0,.25)}
+.c1{--tint:rgba(126,52,23,.92);background:#7E3417}
+.c2{--tint:rgba(27,44,35,.92);background:#1B2C23}
+.c3{--tint:rgba(110,76,30,.92);background:#8C6326}
+.c4{--tint:rgba(29,26,23,.92);background:#1D1A17}
+.c5{--tint:rgba(142,60,28,.92);background:#8E3C1C}
+.sold{position:absolute;right:24px;top:84px;transform:rotate(-10deg);border:2px solid var(--gold);color:var(--gold);background:rgba(29,26,23,.6);backdrop-filter:blur(4px);padding:4px 14px;border-radius:8px;font-weight:700;letter-spacing:.2em;font-size:14px}
 
 /* ---------- Team ---------- */
 .team{padding:120px 0;background:var(--sand)}
@@ -551,27 +554,30 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
     </div>
     <div class="list-grid">
       <a class="card big c1 reveal" href="https://www.facebook.com/withyoupropertylimited/posts/pfbid02Ut9j3jgkiWoPW7KNEhLexcVy2SeKY9zSXeHomhUJvFHvSDju4AroviqYaCDdP5sEl" target="_blank" rel="noopener">
+        <img class="ph" src="assets/listings/wigan.jpg" alt="Wigan 排屋街景（示意圖）" loading="lazy">
         <div class="top"><span class="pill">最新放售</span><span class="arrow">↗</span></div>
-        <span class="pc">WN3</span>
-        <div><h3>Wigan, Manchester</h3><p>Wigan, WN3 · 歡迎查詢價格及預約睇樓</p></div>
-        <svg class="house" viewBox="0 0 100 100" aria-hidden="true"><path fill="#fff" d="M50 8 4 46h12v46h68V46h12zM42 92V64h16v28z"/></svg>
+        <div><span class="pc">WN3</span><h3>Wigan, Manchester</h3><p>Wigan, WN3 · 歡迎查詢價格及預約睇樓</p></div>
       </a>
       <a class="card c2 reveal d1" href="https://www.facebook.com/withyoupropertylimited/posts/pfbid02DGwcMQDpnZLCQMfS4XfKj6WcJ14q7pDhyifMZWsD3JK8JPrUjWKczseQxNuRo543l" target="_blank" rel="noopener">
+        <img class="ph" src="assets/listings/wa15.jpg" alt="WA15 磚砌獨立屋（示意圖）" loading="lazy">
         <div class="top"><span class="pill">最新租盤</span><span class="arrow">↗</span></div>
         <div><span class="pc">WA15</span><h3>3 Bed Semi-Detached</h3><p>Radlet Drive, WA15</p></div>
       </a>
       <a class="card c3 reveal d2" href="https://www.facebook.com/photo?fbid=621001570736253&set=pcb.621001647402912" target="_blank" rel="noopener">
+        <img class="ph" src="assets/listings/oldham.jpg" alt="Oldham 磚屋（示意圖）" loading="lazy">
         <div class="top"><span class="pill">放售</span><span class="arrow">↗</span></div>
         <div><span class="pc">OL4</span><h3>Oldham, Manchester</h3><p>Paulden Avenue, OL4 2JA</p></div>
       </a>
       <a class="card c4 reveal d1" href="https://withyouproperty.uk/affinity-living-riverview-manchester/">
+        <img class="ph" src="assets/listings/riverview.jpg" alt="市中心現代住宅大廈（示意圖）" loading="lazy">
         <div class="top"><span class="pill">市中心</span><span class="arrow">↗</span></div>
         <span class="sold">已售罄</span>
         <div><span class="pc">M3</span><h3>Affinity Living Riverview</h3><p>Bridge Street, M3 5AA</p></div>
       </a>
       <a class="card c5 reveal d2" href="https://www.facebook.com/withyoupropertylimited/posts/pfbid02E228CyHquuCmTk8mT6nfvvrRt8LjGma7f9Jy3Co4MeXZHy2uAyyuSDJGnrHGsNHYl" target="_blank" rel="noopener">
+        <img class="ph" src="assets/listings/bury.jpg" alt="曼徹斯特紅磚建築（示意圖）" loading="lazy">
         <div class="top"><span class="pill">放售</span><span class="arrow">↗</span></div>
-        <div><span class="pc" style="color:var(--brick)">Bury</span><h3>Bury, Manchester</h3><p>查看樓盤詳情及相片</p></div>
+        <div><span class="pc">Bury</span><h3>Bury, Manchester</h3><p>查看樓盤詳情及相片</p></div>
       </a>
     </div>
   </div>
@@ -710,7 +716,7 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
     </div>
     <div class="legal">
       <span>© <span id="yr">2026</span> Withyou Property Limited · 英格蘭註冊公司，公司號碼 14322869</span>
-      <span>Manchester Estate &amp; Letting Agent</span>
+      <span>樓盤相片為示意圖，來源 <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> · Manchester Estate &amp; Letting Agent</span>
     </div>
   </div>
 </footer>
