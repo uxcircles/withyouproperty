@@ -336,20 +336,30 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
   .mono{width:120px;margin-bottom:18px}
 }
 
-/* UX Circles proposal stripe */
+/* UX Circles concept bar (same pattern as other UX Circles concepts) */
 :root{--stripe:38px}
-.uxc{position:fixed;inset:0 0 auto 0;height:var(--stripe);z-index:70;background:repeating-linear-gradient(-45deg,#1D1A17 0 14px,#26221E 14px 28px);color:#F4EDE3;display:flex;align-items:center;justify-content:center;gap:12px;font-size:12.5px;letter-spacing:.04em;padding:0 16px;white-space:nowrap;overflow:hidden}
-.uxc .dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);position:relative;flex:0 0 18px}
-.uxc .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;border:1.5px solid var(--gold);opacity:.6}
-.uxc b{font-weight:500;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
-.uxc .sep{opacity:.35}
+.concept-bar{position:absolute;inset:0 0 auto 0;z-index:70;background:var(--ink);color:#d8d2c8;font-size:13px}
+.concept-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:var(--stripe)}
+.concept-inner p{margin:0;display:flex;align-items:center;gap:10px;line-height:1.4}
+.concept-inner a{color:#fff;display:inline-flex;align-items:center;gap:4px;text-decoration:none;white-space:nowrap}
+.concept-inner a svg{width:14px;height:14px}
+.concept-long a{text-decoration:underline}
+.concept-tag{background:var(--brick);color:#fff;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
 header{top:var(--stripe)}
+header.scrolled{top:0}
 .hero{padding-top:calc(150px + var(--stripe))}
-@media (max-width:640px){.uxc .long{display:none}.hero{padding-top:calc(120px + var(--stripe))}}
+.concept-note a{text-decoration:underline}
+@media (max-width:640px){.concept-long,.concept-by{display:none}.hero{padding-top:calc(120px + var(--stripe))}}
+@media print{.concept-bar{display:none}}
 </style>
 </head>
 <body>
-<div class="uxc" role="note"><span class="dot" aria-hidden="true"></span><span>Redesign concept by <b>UX Circles</b></span><span class="sep long">·</span><span class="long">此為 UX Circles 為 Withyou Property 準備的網站重新設計提案，並非正式網站</span></div>
+<div class="concept-bar" role="note">
+  <div class="wrap concept-inner">
+    <p><span class="concept-tag">概念</span><span class="concept-long">改版概念設計，並非 <a href="https://withyouproperty.uk/" target="_blank" rel="noopener">Withyou Property 官方網站</a>。</span></p>
+    <a href="https://ux-circles.com/web" target="_blank" rel="noopener"><span class="concept-by">設計：</span><strong>UX CIRCLES</strong> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
+</div>
 
 <header id="top">
   <div class="wrap nav">
@@ -731,6 +741,7 @@ header{top:var(--stripe)}
       <div><h5>社交媒體</h5><ul><li><a href="https://www.instagram.com/withyou_property/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/withyoupropertylimited" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.youtube.com/@WithyouPropertyLimited" target="_blank" rel="noopener">YouTube</a></li></ul></div>
     </div>
     <div class="legal">
+      <span class="concept-note" style="flex-basis:100%">非官方改版概念，設計： <a href="https://ux-circles.com/web" target="_blank" rel="noopener">UX CIRCLES</a></span>
       <span>© <span id="yr">2026</span> Withyou Property Limited · 英格蘭註冊公司，公司號碼 14322869</span>
       <span>樓盤相片為示意圖，來源 <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> · Manchester Estate &amp; Letting Agent</span>
     </div>
