@@ -208,7 +208,11 @@ section{position:relative}
 .member{background:var(--paper);border-radius:var(--radius);padding:30px 26px;transition:transform .4s,box-shadow .4s}
 .member:hover{transform:translateY(-8px);box-shadow:0 30px 50px -30px rgba(29,26,23,.4)}
 .mono{width:100%;aspect-ratio:1;border-radius:50% 50% 50% 14px;display:grid;place-items:center;font-family:var(--display);font-style:italic;font-size:64px;font-weight:400;color:#fff;margin-bottom:24px;position:relative;overflow:hidden}
-.mono::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.25),transparent 60%)}
+.mono::after{content:"";position:absolute;inset:0;background:var(--tint);mix-blend-mode:color;opacity:.55;transition:opacity .5s}
+.mono img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.05);transition:filter .6s,transform .8s}
+.member:hover .mono img{filter:none;transform:scale(1.04)}
+.member:hover .mono::after{opacity:0}
+.mono .ph-note{position:absolute;left:10px;bottom:10px;z-index:2;font-family:var(--sans);font-style:normal;font-size:10px;letter-spacing:.08em;background:rgba(29,26,23,.55);color:#fff;padding:2px 8px;border-radius:999px}
 .member h3{font-family:var(--display);font-size:22px;font-weight:600}
 .member .role{font-size:13px;color:var(--brick);letter-spacing:.06em;margin:2px 0 12px}
 .member p{font-size:14px;color:var(--ink-soft);line-height:1.75}
@@ -329,11 +333,23 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
   form{grid-template-columns:1fr;padding:26px}
   .foot{grid-template-columns:1fr}
   .marquee-track{font-size:19px}
-  .mono{width:96px;font-size:38px;margin-bottom:18px}
+  .mono{width:120px;margin-bottom:18px}
 }
+
+/* UX Circles proposal stripe */
+:root{--stripe:38px}
+.uxc{position:fixed;inset:0 0 auto 0;height:var(--stripe);z-index:70;background:repeating-linear-gradient(-45deg,#1D1A17 0 14px,#26221E 14px 28px);color:#F4EDE3;display:flex;align-items:center;justify-content:center;gap:12px;font-size:12.5px;letter-spacing:.04em;padding:0 16px;white-space:nowrap;overflow:hidden}
+.uxc .dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);position:relative;flex:0 0 18px}
+.uxc .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;border:1.5px solid var(--gold);opacity:.6}
+.uxc b{font-weight:500;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.uxc .sep{opacity:.35}
+header{top:var(--stripe)}
+.hero{padding-top:calc(150px + var(--stripe))}
+@media (max-width:640px){.uxc .long{display:none}.hero{padding-top:calc(120px + var(--stripe))}}
 </style>
 </head>
 <body>
+<div class="uxc" role="note"><span class="dot" aria-hidden="true"></span><span>Redesign concept by <b>UX Circles</b></span><span class="sep long">·</span><span class="long">此為 UX Circles 為 Withyou Property 準備的網站重新設計提案，並非正式網站</span></div>
 
 <header id="top">
   <div class="wrap nav">
@@ -350,7 +366,7 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
       <li><a href="#contact">聯絡方法</a></li>
     </ul>
     <div class="nav-right">
-      <a class="lang" href="https://withyouproperty.uk/en/"><b>中</b> / EN</a>
+      <a class="lang" href="en/"><b>中</b> / EN</a>
       <a class="btn btn-primary" href="#contact">預約諮詢</a>
       <button class="burger" aria-label="開啟選單" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     </div>
@@ -451,7 +467,7 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
       <p class="intro-body">Withyou Property Limited 是一家位於英國曼徹斯特的華人房地產公司，由四位充滿熱誠的年輕人所創立。作為獨立自主的物業公司，我們不受傳統租賃公司內部框架的限制，令我們在與您合作時擁有更大的靈活性——涵蓋物業盤源、買賣、物業管理、裝修和維修，為您提供最便利的投資體驗。</p>
       <div class="sign">
         <div class="avatars">
-          <i style="background:var(--brick)">LY</i><i style="background:var(--moss-soft)">BM</i><i style="background:var(--gold)">HW</i><i style="background:var(--ink)">ML</i>
+          <i style="background:var(--brick) url(assets/team/lewis.jpg) center 22%/cover"></i><i style="background:var(--moss-soft) url(assets/team/benny.jpg) center 22%/cover"></i><i style="background:var(--gold) url(assets/team/hebe.jpg) center 22%/cover"></i><i style="background:var(--ink) url(assets/team/malissa.jpg) center 22%/cover"></i>
         </div>
         <small>Lewis、Benny、Hebe、Malissa<br>Withyou Property 創辦團隊</small>
       </div>
@@ -592,22 +608,22 @@ footer{padding:60px 0 40px;font-size:14px;color:var(--ink-soft)}
     </div>
     <div class="team-grid">
       <article class="member reveal">
-        <div class="mono" style="background:var(--brick)">LY</div>
+        <div class="mono" style="--tint:var(--brick)"><img src="assets/team/lewis.jpg" alt="Lewis Yim（示意相片）" loading="lazy"><span class="ph-note">示意</span></div>
         <h3>Lewis Yim</h3><div class="role">General Manager</div>
         <p>致力於引導團隊實現公司的長期目標和發展方向，並以身作則，激勵著團隊成員不斷進步。</p>
       </article>
       <article class="member reveal d1">
-        <div class="mono" style="background:var(--moss-soft)">BM</div>
+        <div class="mono" style="--tint:var(--moss-soft)"><img src="assets/team/benny.jpg" alt="Benny Mak（示意相片）" loading="lazy"><span class="ph-note">示意</span></div>
         <h3>Benny Mak</h3><div class="role">Marketing Manager</div>
         <p>擅於捕捉市場動態，制定精準的市場策略，並將公司的價值傳達給更多的客戶。</p>
       </article>
       <article class="member reveal d2">
-        <div class="mono" style="background:var(--gold)">HW</div>
+        <div class="mono" style="--tint:var(--gold)"><img src="assets/team/hebe.jpg" alt="Hebe Wong（示意相片）" loading="lazy"><span class="ph-note">示意</span></div>
         <h3>Hebe Wong</h3><div class="role">Sales &amp; Marketing Manager</div>
         <p>擁有優秀的溝通技巧和人際關係，熱情洋溢，始終以客戶的利益為先，建立長期合作關係。</p>
       </article>
       <article class="member reveal d3">
-        <div class="mono" style="background:var(--ink)">ML</div>
+        <div class="mono" style="--tint:var(--ink)"><img src="assets/team/malissa.jpg" alt="Malissa Lee（示意相片）" loading="lazy"><span class="ph-note">示意</span></div>
         <h3>Malissa Lee</h3><div class="role">Operation Manager</div>
         <p>擁有卓越的組織及解決問題能力，確保公司日常運營順利進行，始終專注於提高效率。</p>
       </article>
